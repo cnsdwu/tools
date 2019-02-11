@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>首页</title>
+        <!-- zui -->
+        <link href="../css/zui.min.css" rel="stylesheet">
+        <link href="../lib/datagrid/zui.datagrid.min.css" rel="stylesheet">
+        <link href="../lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+        <style type="text/css">
+            td{
+                word-break: break-all;
+                word-wrap: break-word;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" role="navigation">
+          <div class="container-fluid">
+            <!-- 导航头部 -->
+            <div class="navbar-header">
+              <!-- 移动设备上的导航切换按钮 -->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- 品牌名称或logo -->
+              <a class="navbar-brand" href="your/nice/url">ZUI</a>
+            </div>
+            <!-- 导航项目 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+              <!-- 一般导航项目 -->
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="your/nice/url">项目</a></li>
+                <li><a href="your/nice/url">需求</a></li>
+                <!-- 导航中的下拉菜单 -->
+                <li class="dropdown">
+                  <a href="your/nice/url" class="dropdown-toggle" data-toggle="dropdown">管理 <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="your/nice/url">任务</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- END .navbar-collapse -->
+          </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <!-- 侧边栏 -->
+                <nav class="menu col-md-2" data-ride="menu">
+                  <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+                    <li><a href="#"><i class="icon icon-th"></i>首页</a></li>
+                    <li class="open">
+                      <a href="#"><i class="icon icon-star"></i>文章管理</a>
+                      <ul>
+                        <li><a href="#">设置</a></li>
+                        <li><a href="#">文章</a></li>
+                        <li><a href="#">用户</a></li>
+                        <li><a href="#">使用</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#"><i class="icon icon-home"></i>我的文件</a>
+                      <ul>
+                        <li><a href="#">今天</a></li>
+                        <li><a href="#">明天</a></li>
+                        <li><a href="#">昨天</a></li>
+                        <li><a href="#">本周</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"><i class="icon icon-list-ul"></i>全部</a></li>
+                    <li>
+                      <a href="#"><i class="icon icon-tasks"></i>状态</a>
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-circle-blank"></i>已就绪</a>
+                          <ul>
+                            <li><a href="#">已取消</a></li>
+                            <li><a href="#">已关闭</a></li>
+                          </ul>
+                        </li>
+                        <li class="active"><a href="#"><i class="icon icon-play-sign"></i>进行中</a></li>
+                        <li><a href="#"><i class="icon icon-ok-sign"></i>已完成</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="container col-md-10">
+                    <div class="content-wrapper">
+            <div class="content-header">
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="icon icon-home"></i></a></li>
+                    <li><a href="#">文章管理</a></li>
+                    <li class="active">文章列表</li>
+                </ul>
+            </div>
+            <div class="content-body">
+                <div class="container-fluid">
+                    <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>页面演示仅供参考，可自行修改</p>   
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">文章列表</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-tools" style="margin-bottom: 15px;">
+                                <div class="pull-right" style="width: 250px;">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="关键字">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">搜索</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="tools-group">
+                                    <a  type="button" data-moveable="true" data-toggle="modal" data-target="#add" href="#" class="btn btn-primary"><i class="icon icon-plus-sign"></i> 新增</a>
+                                    <a href="#" class="btn btn-success"><i class="icon icon-check-circle"></i> 启用</a>
+                                    <a href="#" class="btn btn-warning"><i class="icon icon-ban-circle"></i> 禁用</a>
+                                    <a href="#" class="btn btn-danger"><i class="icon icon-remove-sign"></i> 删除</a>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-auto table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="30">
+                                            <input type="checkbox">
+                                        </th>
+                                        <th width="50">ID</th>
+                                        <th>标题</th>
+                                        <th>作者</th>
+                                        <th>贡献者</th>
+                                        <th>喜欢</th>
+                                        <th>浏览</th>
+                                        <th>日期</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+                </div>    
+            </div>
+        </div>
+        <!-- 对话框HTML -->
+        <div class="modal fade" id="add">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">添加文章</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-control has-label-left">
+                  <input id="title" type="text" class="form-control" placeholder="">
+                  <label for="title" class="input-control-label-left">标题:</label>
+                </div>
+                <br>
+                <div class="input-control has-label-left">
+                  <input id="author" type="text" class="form-control" placeholder="">
+                  <label for="author" class="input-control-label-left">作者:</label>
+                </div>
+                <br>
+                <textarea id="content" class="form-control" rows="6" placeholder="可以输入多行文本"></textarea>
+                <br>
+                <div class="input-control has-label-left">
+                  <input id="offer" type="text" class="form-control" placeholder="">
+                  <label for="offer" class="input-control-label-left">贡献者:</label>
+                </div>
+                <br>
+                <input id="time" type="text" class="form-control form-date" placeholder="请选择一个日期" readonly="readonly">
+                <br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="loadingBtnExample" type="button" class="btn btn-primary" data-loading-text="保存中...">保存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 对话框HTML修改 -->
+        <div class="modal fade" id="change">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">修改文章</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-control has-label-left">
+                  <input id="cId" disabled="disabled" type="text" class="form-control" placeholder="">
+                  <label for="cId" class="input-control-label-left">ID:</label>
+                </div>
+                <br>
+                <div class="input-control has-label-left">
+                  <input id="cTitle" type="text" class="form-control" placeholder="">
+                  <label for="cTitle" class="input-control-label-left">标题:</label>
+                </div>
+                <br>
+                <div class="input-control has-label-left">
+                  <input id="cAuthor" type="text" class="form-control" placeholder="">
+                  <label for="cAuthor" class="input-control-label-left">作者:</label>
+                </div>
+                <br>
+                <textarea id="cContent" class="form-control" rows="6" placeholder="可以输入多行文本"></textarea>
+                <br>
+                <div class="input-control has-label-left">
+                  <input id="cOffer" type="text" class="form-control" placeholder="">
+                  <label for="cOffer" class="input-control-label-left">贡献者:</label>
+                </div>
+                <br>
+                <input id="cTime" type="text" class="form-control form-date" placeholder="请选择一个日期">
+                <br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="changeButton" type="button" class="btn btn-primary" data-loading-text="保存中...">保存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 在此处编码你的创意 -->
+    
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../js/jquery-3.3.1.js"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../js/zui.min.js"></script>
+        <script src="../lib/datagrid/zui.datagrid.min.js"></script>
+        <script src="../lib/datetimepicker/datetimepicker.min.js"></script>
+        <script type="text/javascript">
+            $article = [];
+            $.post('../newclass.php', {
+                'do': 'get',
+            },function(data,status){
+                if(status == 'success'){
+                    var $result = JSON.parse(data);
+                    if($result.status == 1){
+                        var $table = '';
+                        $article = $result.value;
+                        for($i in $article){
+                        $table += '<tr><td><input type="checkbox" name="'+$article[$i].id+'"></td><td>'+$article[$i].id+'</td><td>'+$article[$i].title+'</td><td>'+$article[$i].author+'</td><td>'+$article[$i].offer+'</td><td>'+$article[$i].like+'</td><td>'+$article[$i].view+'</td><td>'+$article[$i].time+'</td><td><a href="#" data="'+$i+'" class="btn btn-xs btn-primary change">编辑</a><a href="#" data="'+$i+'" class="btn btn-xs btn-danger delete">删除</a></td></tr>';
+                        }
+                        $('#table').append($table);
+                    }else{
+                    }
+                }
+            });
+            // 点击修改
+            $('tbody').on('click', '.change', function(){
+                $id = $(this).attr('data');
+                $('#cId').val($article[$id].id);
+                $('#cTitle').val($article[$id].title);
+                $('#cAuthor').val($article[$id].author);
+                $('#cContent').val($article[$id].content);
+                $('#cOffer').val($article[$id].offer);
+                $('#cTime').val($article[$id].time);
+                $('#change').modal('show');
+            });
+            $('tbody').on('click', '.delete', function(){
+                $id = $(this).attr('data');
+                var r=confirm("确定删除ID:"+$article[$id].id);
+                if (r==true){
+                    $.post('../newclass.php', {
+                        'do': 'del',
+                        'id': $article[$id].id,
+                    },function(data,status){
+                        if(status == 'success'){
+                            var $result = JSON.parse(data);
+                            if($result.status == 1){
+                            }else{
+                            }
+                            new $.zui.Messager($result.message, {
+                                icon: 'bell' // 定义消息图标
+                            }).show();
+                        }
+                    });
+                }
+                else{
+                    
+                }
+                
+            });
+            // 仅选择日期
+            $(".form-date").datetimepicker(
+            {
+                language:  "zh-CN",
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0,
+                format: "yyyy-mm-dd"
+            });
+            // 添加
+            $('#loadingBtnExample').on('click', function() {
+                var $btn = $(this);
+                var $title = $('#title').val();
+                var $author = $('#author').val();
+                var $content = $('#content').val();
+                var $offer = $('#offer').val();
+                var $time = $('#time').val();
+                $btn.button('loading');
+                $.post('../newclass.php', {
+                    'do': 'add',
+                    'title': $title,
+                    'author': $author,
+                    'content': $content,
+                    'offer': $offer,
+                    'time': $time,
+                },function(data,status){
+                    if(status == 'success'){
+                        var $result = JSON.parse(data);
+                        if($result.status == 1){
+                            $('#add').modal('hide');
+                        }else{
+                        }
+                        new $.zui.Messager($result.message, {
+                            icon: 'bell' // 定义消息图标
+                        }).show();
+                    }
+                    $btn.button('reset');
+                });
+            });
+            // 修改
+            $('#changeButton').on('click', function() {
+                var $btn = $(this);
+                var $id = $('#cId').val();
+                var $title = $('#cTitle').val();
+                var $author = $('#cAuthor').val();
+                var $content = $('#cContent').val();
+                var $offer = $('#cOffer').val();
+                var $time = $('#cTime').val();
+                $btn.button('loading');
+                $.post('../newclass.php', {
+                    'do': 'change',
+                    'id': $id,
+                    'title': $title,
+                    'author': $author,
+                    'content': $content,
+                    'offer': $offer,
+                    'time': $time,
+                },function(data,status){
+                    if(status == 'success'){
+                        var $result = JSON.parse(data);
+                        if($result.status == 1){
+                            $('#change').modal('hide');
+                        }else{
+                        }
+                        new $.zui.Messager($result.message, {
+                            icon: 'bell' // 定义消息图标
+                        }).show();
+                    }
+                    $btn.button('reset');
+                });
+            });
+        </script>
+    </body>
+</html>

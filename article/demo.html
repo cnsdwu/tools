@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>文本加密</title>
+	<meta name="Keywords" content="加密,解密,社会主义核心价值观">
+    <meta name="description" itemprop="description" content="将任意内容文本加密为不可识别其意图的特殊文本">
+    <meta itemprop="name" content="文本加密">  
+    <meta itemprop="image" content="http://api.wwzc.cc/images/textencryption.png">
+	<link rel="stylesheet" href="css/zui.min.css">
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/zui.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+</head>
+<body>
+	<!-- 导航条 -->
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+	    	<!-- 导航头部 -->
+	    	<div class="navbar-header">
+	    	  	<!-- 移动设备上的导航切换按钮 -->
+	    	  	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+	    	  	  	<span class="sr-only"></span>
+	    	  	  	<span class="icon-bar"></span>
+	    	  	  	<span class="icon-bar"></span>
+	    	  	  	<span class="icon-bar"></span>
+	    	  	</button>
+	    	  	<!-- 右侧图标 -->
+	    	  	<a class="navbar-brand" href="javascript:;">
+	    	  		<i class="icon icon-leaf"></i>
+	    	  	</a>
+	    	</div>
+	    	<!-- 导航项目 -->
+	    	<div class="collapse navbar-collapse navbar-collapse-example">
+	    	  	<!-- 一般导航项目 -->
+	    	  	<ul class="nav navbar-nav">
+	    	  	  	<li class="active"><a href="/">首页</a></li>
+	    	  	</ul>
+	    	  	<!-- 右侧的导航项目 -->
+		      	<ul class="nav navbar-nav navbar-right">
+		      	  	<li class="dropdown">
+			          	<a href="your/nice/url" class="dropdown-toggle" data-toggle="dropdown">管理<b class="caret"></b></a>
+			          	<ul class="dropdown-menu" role="menu">
+			            	<li><a href="/token.html">申请token</a></li>
+			          </ul>
+			        </li>
+		      	</ul>
+	    	</div>
+	  	</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<!-- 原文编辑框 -->
+				<textarea id="detext" class="form-control" rows="5" placeholder="请输入需要加密的文本"></textarea>
+			</div>
+			<!-- 加密解密按钮 -->
+			<div class="col-md-2">
+				<button id="btnEn" type="button" class="btn btn-block btn-primary" data-loading-text="加密中...">加密</button>
+				<button id="btnDe" type="button" class="btn btn-block btn-success" data-loading-text="解密中...">解密</button>
+			</div>
+			<div class="col-md-5">
+				<!-- 密文编辑框 -->
+				<textarea id="entext" class="form-control" rows="5" placeholder="请输入需要解密的文本"></textarea>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="panel-group" id="accordionPanels" aria-multiselectable="true">
+				<div class="panel panel-default">
+				    <div class="panel-heading" id="headingTwo">
+				      	<h4 class="panel-title">
+				      		<!-- 面板标题 -->
+				        	<span class="collapsed" data-toggle="collapse" data-parent="#accordionPanels" href="#collapseTwo">
+				        		查看API调用方法
+				        	</span>
+				      	</h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse">
+				      <div class="panel-body">
+					      	<ul class="list-group">
+							  	<li class="list-group-item">接口说明：将任意内容文本加密为不可识别其意图的特殊文本或相反</li>
+							  	<li class="list-group-item">接口地址：http://api.wwzc.cc/24/index.php
+							  		<a id="copyUrl" class="icon icon-copy" data-toggle="tooltip" title="点击接口地圵复制" data-clipboard-text="http://api.wwzc.cc/24/index.php"></a>
+							  		(支持https)
+							  	</li>
+							  	<li class="list-group-item">返回格式：json</li>
+							  	<li class="list-group-item">请求方式：GET/POST</li>
+							</ul>
+							<h3>请求参数</h3>
+							<table class="table table-hover table-auto">
+							  	<thead>
+							  	  	<tr>
+							  	  	  	<th>参数名称</th>
+							  	  	  	<th>类型</th>
+							  	  	  	<th>示例值</th>
+							  	  	  	<th>必须</th>
+							  	  	  	<th>描述</th>
+							  	  	</tr>
+							  	</thead>
+							  	<tbody>
+							  	  	<tr>
+							  	  	  	<td>token</td>
+							  	  	  	<td>string</td>
+							  	  	  	<td style="word-wrap:break-word;word-break:break-all;">a6819d21b4433e333eca5357d92e2496ee0a1e2b1fe2351e0275d45b11ba116e</td>
+							  	  	  	<td>是</td>
+							  	  	  	<td>验证字段，可直接申请</td>
+							  	  	</tr>
+							  	  	<tr>
+							  	  	  	<td>action</td>
+							  	  	  	<td>string</td>
+							  	  	  	<td>en</td>
+							  	  	  	<td>否</td>
+							  	  	  	<td>en：加密，de：解密，默认：en</td>
+							  	  	</tr>
+							  	  	<tr>
+							  	  	  	<td>text</td>
+							  	  	  	<td>string</td>
+							  	  	  	<td>我是示例文本</td>
+							  	  	  	<td>是</td>
+							  	  	  	<td>action为en：要加密的文本，action为de：要解密的文本</td>
+							  	  	</tr>
+							  	</tbody>
+							</table>
+							<h3>返回参数</h3>
+							<table class="table table-hover">
+							  	<thead>
+							  	  <tr>
+							  	    <th>名称</th>
+							  	    <th>类型</th>
+							  	    <th>示例值</th>
+							  	    <th>描述</th>
+							  	  </tr>
+							  	</thead>
+							  	<tbody>
+							  	  <tr>
+							  	    	<td>status</td>
+							  	    	<td>int</td>
+							  	    	<td>1</td>
+							  	    	<td>结果，1：成功，0：失败</td>
+							  	  </tr>
+							  	  <tr>
+							  	    	<td>code</td>
+							  	    	<td>int</td>
+							  	    	<td>1</td>
+							  	    	<td>错误代码，0：没有错误，1：程序异常，2：解密非加密文本，3：参数异常，4：token错误，5：每日调用次数上限，6：邮件发送失败，7：验证码错误，8：邮箱不合法，9：内容过长</td>
+							  	  </tr>
+							  	  <tr>
+							  	    	<td>message</td>
+							  	    	<td>string</td>
+							  	    	<td>参数异常</td>
+							  	    	<td>提示信息</td>
+							  	  </tr>
+							  	  <tr>
+							  	    	<td>value</td>
+							  	    	<td>string</td>
+							  	    	<td></td>
+							  	    	<td>需要返回的数据</td>
+							  	  </tr>
+							  	</tbody>
+							  	<tfoot>
+							  		<tr>
+							  			<td>返回主体</td>
+							  			<td>string</td>
+							  			<td>{status: 1, code: 0, value: "我要加密"}</td>
+							  			<td>返回主体，json格式</td>
+							  		</tr>
+							  	</tfoot>
+							</table>
+						</div>
+				    </div>
+				  </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		// 复制url
+		var clipboard = new ClipboardJS('#copyUrl');
+		var clipboardText = new ClipboardJS('#messager-0 .messager-actions');
+		// 复制url成功
+		clipboard.on('success', function(e) {
+		    $('[data-toggle="tooltip"]').tooltip('show', '复制成功');
+		});
+		clipboardText.on('success', function(e) {
+		    successMessage.hide();
+		});
+		// 复制url失败
+		clipboard.on('error', function(e) {
+		    $('[data-toggle="tooltip"]').tooltip('show', '复制失败');
+		});
+		// 设置复制url
+		$('[data-toggle="tooltip"]').tooltip();
+		// 成功消息框
+		successMessage = new $.zui.Messager({
+								icon: 'ok-sign', // 图标
+	    						placement: 'bottom', // 定义显示位置
+							    type: 'success', // 定义颜色主题
+							    close: false, // 自动关闭
+							    time: 3000, // 关闭时间
+							    actions: [{
+							        name: 'copy',
+							        icon: 'copy',
+							        text: '复制',
+							        action: function() {  // 点击按钮的回调函数
+							        	// document.execCommand('copy', 'false', null); // 复制选中项
+							        	return false;
+							        }
+							    }],
+							});
+		// 失败消息框
+		errorMessage = new $.zui.Messager({
+							icon: 'exclamation-sign', // 同上
+    						placement: 'bottom',
+						    type: 'danger',
+						    close: false,
+						    time: 2000,
+						});
+		// 点击加密
+		$('#btnEn').on('click', function() {
+			var $text = $('#detext').val();
+			// 判断文本长度
+			if(ckeckStr($text, 30000)){
+				return false;
+			}
+			var $btn = $(this);
+			// 按钮加载
+			$btn.button('loading');
+			// post请求
+			$.post('index.php',{
+				action: 'en',
+				text: $text,
+				token: 'a6819d21b4433e333eca5357d92e2496ee0a1e2b1fe2351e0275d45b11ba116e',
+			},function(data,status) {
+				if(status == 'success'){
+					var $entext = JSON.parse(data);
+					if($entext.status == 1){ // 成功
+						$('#entext').val($entext.value); // 输出至编辑框
+						$('#entext').select(); // 选择输出文本
+						successMessage.show('加密成功'); // 显示成功消息
+						// 设置消息提示属性用以兼容复制
+						$('#messager-0 .messager-actions').attr('data-clipboard-text', $entext.value);
+					}else{ // 失败
+						errorMessage.show('加密失败：'+$entext.message); // 显示失败消息和原因
+					}
+				}
+			    $btn.button('reset'); // 取消按钮加载
+			});
+		});
+		// 点击解密 同上
+		$('#btnDe').on('click', function() {
+			var $text = $('#entext').val();
+			if(ckeckStr($text, 30000)){
+				return false;
+			}
+			var $btn = $(this);
+			$btn.button('loading');
+			$.post('index.php',{
+				action: 'de',
+				text: $text,
+				token: 'a6819d21b4433e333eca5357d92e2496ee0a1e2b1fe2351e0275d45b11ba116e',
+			},function(data,status){
+				if(status == 'success'){
+					var $detext = JSON.parse(data);
+					if($detext.status == 1){
+						$('#detext').val($detext.value);
+						$('#detext').select();
+						successMessage.show('解密成功');
+						// 设置消息提示属性用以兼容复制
+						$('#messager-0 .messager-actions').attr('data-clipboard-text', $detext.value);
+					}else{
+						errorMessage.show('解密失败：'+$detext.message);
+					}
+				}
+			    $btn.button('reset');
+			});
+		});
+		// 数据长度合法性
+		function ckeckStr($str, $length){
+			if($str.length > $length){
+				errorMessage.show('内容过长');
+				return true;
+			}else{
+				if($.trim($str).length < 1){
+					return true;
+				}
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

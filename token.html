@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>申请token</title>
+	<meta name="Keywords" content="token,申请,注册">
+    <meta name="description" content="申请token">
+	<link rel="stylesheet" href="css/zui.min.css">
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/zui.min.js"></script>
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+		body{
+			background-color: #eee;
+			background-size: cover;
+			background-position: center;
+		}
+		.container{
+			min-width: 325px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.popover.fade.top.in{
+			top: -66px !important; // 矫正验证码位置
+		}
+	</style>
+</head>
+<body>
+	<div class="container center-block">
+		<div class="panel panel-primary">
+		  	<div class="panel-heading text-center">
+		  		申请token
+		  	</div>
+		  	<div class="panel-body">
+				<div class="input-control has-icon-left has-warning">
+				  	<input id="email" type="text" class="form-control" placeholder="邮箱">
+				  	<label for="email" class="input-control-icon-left"><i class="icon icon-envelope "></i></label>
+				</div>
+				<br>
+				<div class="input-control has-icon-left has-warning">
+				  	<input id="vcode" type="text" class="form-control" placeholder="验证码(点击获取)" data-toggle="popover" data-placement="top">
+				  	<label for="vcode" class="input-control-icon-left"><i class="icon icon-key"></i></label>
+				</div>
+				<br>
+				<div class="input-control has-icon-left has-warning">
+				  	<input id="ask" type="text" class="form-control" placeholder="邀请码(wwzc.cc)">
+				  	<label for="ask" class="input-control-icon-left"><i class="icon icon-check-circle"></i></label>
+				</div>
+				<div class="checkbox has-success">
+				  	<label>
+				  	  	<input type="checkbox" id="accept" checked>
+				  	  	我已阅读并接受用户协议
+				  	</label>
+				</div>
+				<button id="submit" class="btn btn-block btn-primary" type="button" data-loading-text="申请中...">点击申请</button>
+			</div>
+  		</div>
+	</div>
+	<script type="text/javascript">
+		// 获取必应每日图片
+		$.get('bing/index.php?action=url&token=a6819d21b4433e333eca5357d92e2496ee0a1e2b1fe2351e0275d45b11ba116e', function(data){
+			// 设置背景图片
+			$('body').css('background-image', 'url('+JSON.parse(data).value+')');
+		});
+		// 验证码
+		$('[data-toggle="popover"]').popover({
+			html: true,
+			content: '<img src="getvcode.php"  onclick="this.src=\'getvcode.php?v=\'+(new Date()).getTime()">',
+		});
+		// 点击申请
+		$('#submit').on('click', function() {
+			if(!$('#accept').is(':checked')){
+				errorMessage.show('请先选择接受用户协议');
+				return false;
+			}
+			var $email = $('#email').val();
+			var $vcode = $('#vcode').val();
+			var $ask = $('#ask').val();
+			// 判断内容是否为空
+			if($email=='' || $vcode=='' || $ask==''){
+				errorMessage.show('输入内容不能为空');
+				return false;
+			}
+			var $btn = $(this);
+			// 按钮加载
+			$btn.button('loading');
+			// post请求
+			$.post('token.php',{
+				action: 'register',
+				email: $email,
+				vcode: $vcode,
+				ask: $ask,
+			},function(data,status){
+				if(status == 'success'){
+					var $result = JSON.parse(data);
+					if($result.status == 1){ // 成功
+						successMessage.show('申请成功，已发送至您的邮箱'); // 显示成功消息
+					}else{
+						errorMessage.show('申请失败：'+$result.message); // 显示失败消息和原因
+					}
+				}
+			    $btn.button('reset'); // 取消按钮加载
+			});
+		});
+		// 成功消息框
+		successMessage = new $.zui.Messager({
+								icon: 'ok-sign', // 图标
+	    						placement: 'bottom', // 定义显示位置
+							    type: 'success', // 定义颜色主题
+							    close: false, // 自动关闭
+							    time: 3000, // 关闭时间
+							});
+		// 失败消息框 同上
+		errorMessage = new $.zui.Messager({
+							icon: 'exclamation-sign',
+    						placement: 'bottom',
+						    type: 'danger',
+						    close: false,
+						    time: 2000,
+						});
+	</script>
+</body>
+</html>
